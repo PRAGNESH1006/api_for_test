@@ -11,7 +11,12 @@ dotenv.config();
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
+app.use(
+  cors({
+    origin: "http://localhost:5173", // Change this to your frontend's URL
+    methods: "GET,POST,PUT,DELETE", // Define allowed HTTP methods
+  })
+);
 // routes
 app.use("/api/", shortUrl);
 // router.get("/signIn", signIn);
